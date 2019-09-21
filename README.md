@@ -36,4 +36,5 @@ SOCIAL_AUTH_AUTH0_SCOPE = [
   'profile',
   'email',
 ]
+LOGIN_URL = '/login/auth0'
 ```
