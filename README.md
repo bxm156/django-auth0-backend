@@ -26,3 +26,14 @@ AUTHENTICATION_BACKENDS = [
   ...
 ]
   ```
+4. Add the follow to settings.py
+```
+SOCIAL_AUTH_AUTH0_DOMAIN  = "custom.auth0.com"
+SOCIAL_AUTH_AUTH0_KEY     = "XXXXXXXXXXXXXXXX"
+SOCIAL_AUTH_AUTH0_SECRET  = "XXXXXXXXXXXXXXXX"
+SOCIAL_AUTH_AUTH0_SCOPE = [
+  'openid',
+  'profile',
+  'email',
+]
+```
