@@ -1,7 +1,10 @@
 import requests
 from social_core.backends.oauth import BaseOAuth2
 from django_auth0_backend.jwt import decode
-from nameparser import HumanName
+try:
+    from nameparser import HumanName
+except ImportError:
+    pass
 
 CLAIMS_PREFIX = 'https://{auth_domain}/claims/'
 JWKS_URL = 'https://{auth0_domain}/.well-known/jwks.json'
@@ -34,13 +37,16 @@ class Auth0Backend(BaseOAuth2):
         if all(key in userinfo for key in ('given_name', 'family_name')):
             return userinfo['given_name'], userinfo['family_name']
         if 'name' in userinfo:
-            name = HumanName(userinfo['name'])
-            return name.first, name.last
+            try: 
+                name = HumanName(userinfo['name'])
+                return name.first, name.last
+            except Exception:
+                pass
         return userinfo['nickname'], ''
 
 
     def get_user_details(self, response):
-        url = "https://{auth_domain}/userinfo".format(
+        url = "https://{auth0_domain}/userinfo".format(
             auth0_domain=self.setting('DOMAIN'),
         )
         headers = {'Authorization': "Bearer {access_token}".format(
@@ -49,7 +55,7 @@ class Auth0Backend(BaseOAuth2):
         resp = requests.get(url, headers=headers)
         userinfo = resp.json()
         jwks_url = JWKS_URL.format(
-            auth0_domain=self.settings('DOMAIN'),
+            auth0_domain=self.setting('DOMAIN'),
         )
         userinfo = decode(
             response['id_token'],
