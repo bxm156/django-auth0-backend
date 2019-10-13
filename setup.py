@@ -3,6 +3,7 @@ from setuptools import setup
 setup(
     name='django-auth0-backend',
     author = "Bryan Marty",
+    author_email = "bryan@bryanmarty.com"
     keywords = "django python social auth auth0",
     version='0.1.0',
     packages=['django_auth0_backend'],
