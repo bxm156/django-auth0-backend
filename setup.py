@@ -5,7 +5,7 @@ setup(
     author = "Bryan Marty",
     author_email = "bryan@bryanmarty.com",
     keywords = "django python social auth auth0",
-    version='0.1.0',
+    version='0.2.0',
     packages=['django_auth0_backend'],
     license='MIT License',
     install_requires=[
