@@ -1,0 +1,14 @@
+sudo: false
+language: python
+python:
+- '2.7'
+- '3.6'
+install: pip install tox-travis
+script: tox
+deploy:
+  provider: pypi
+  user: Bryan.Marty
+  password:
+    secure: NKOVk/dd9UqWl39rFNQ/z9eYXGGZxV4inv2z9xE6mDmDbYwMDDaJtQQWyI10uwlSIJy4VxX36v1DQG+0GFH4y5m96lfE+DO+GcIIQsIJvOcM/xT9r0nyr2gmd6Ze11zcbDL1MQC8XlhH4rpmYW7hQfcnJhjp3lzpJtQZKQBrEX/xJoVVrp9fTuR8nFw+RxoMyCU5BT7PPWLayTs25RbJ8jXEGFFbkLgOD6IAsFaab+eKYe6/EBBeSrwQX6+nAsksQ8C8YKApFNCB2eGDS19rq2nF+gKL0dY82BiEaTl13+RYbLJNyowB98vJm4eZEdczmCB9s3LzxfJm0dlUe61W4eP/uvDHvkYst93lWer7RrR/cE3RnZcqKZi2tzowVkz8Icd8RLrT3H72Vn0dc/saZ2+4ok4wUlWXipCNuqJfBg0q1i0s7bWjM+VYcozkynyuw4JyuEWTaCOslPqgWSaceGdiJNJv+hSCommedHptu893amFD/rnO/RQGEOadesZ5XkQF12gv941C4Uk9hTsJuyNYKBxTJSUJeW1I8JAyTWQyqYr+ihpEnGwJbwylWOVxpjaCQstS+ZtaD7zfxT8JuWgUQOnPWLHNNQVsm+MkavrM+P78NTszHbwP7M6CPQ/QkT46yoBaHOkDze+VjKR2426KBBmQCCB+jS294GtuSfY=
+  on:
+    tags: true

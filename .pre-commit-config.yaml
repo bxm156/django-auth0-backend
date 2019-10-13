@@ -1,0 +1,46 @@
+repos:
+-   repo: git://github.com/pre-commit/pre-commit-hooks
+    rev: v2.3.0
+    hooks:
+    -   id: debug-statements
+    -   id: trailing-whitespace
+    -   id: fix-encoding-pragma
+        args:
+        - --remove
+        exclude: .*\/migrations\/.*
+    -   id: check-ast
+    -   id: flake8
+        exclude: .*\/migrations\/.*
+    -   id: pretty-format-json
+        args:
+        - --autofix
+    -   id: requirements-txt-fixer
+    -   id: check-yaml
+    -   id: check-json
+    -   id: check-toml
+    -   id: check-xml
+    -   id: check-added-large-files
+    -   id: check-byte-order-marker
+    -   id: check-case-conflict
+    -   id: check-symlinks
+    -   id: check-docstring-first
+    -   id: detect-aws-credentials
+    -   id: detect-private-key
+    -   id: end-of-file-fixer
+    -   id: forbid-new-submodules
+    -   id: mixed-line-ending
+        args:
+        - --fix=lf
+    - id: sort-simple-yaml
+    - id: pretty-format-json
+-   repo: git://github.com/asottile/reorder_python_imports
+    rev: v1.7.0
+    hooks:
+    -   id: reorder-python-imports
+        files: .*\.py$
+        exclude: .*\/migrations\/.*
+-   repo: https://github.com/pre-commit/mirrors-autopep8
+    rev: v1.4.4
+    hooks:
+    -   id: autopep8
+        exclude: .*\/migrations\/.*
